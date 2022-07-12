@@ -1,30 +1,25 @@
-const Hello = (props) => {
-  const fechaNacimiento = () =>{
-    const now = new Date().getFullYear();
-    return now - props.age;
-  }
-  return (
-    <div>
-      <p>
-        Hello {props.name}, you are {props.age} years old
-      </p>
-      <p>
-        You were born in {fechaNacimiento()}
-      </p>
-    </div>
-  )
-}
+import { useState } from "react";
+
+const Display = (counter) => <div> {counter} </div>
+const Button = (onClick, text) =>  <button onClick={onClick}> {text} </button>
 
 const App = () => {
-  const name = 'Peter'
-  const age = 10
+  const [counter, setCounter] = useState(0);
+
+  const sumaUno = () => { setCounter(counter + 1) };
+  const restarUno = () => {setCounter(counter -1)}
+  const reset = () => { setCounter(0) };
+  
 
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name="Maya" age={26 + 10} />
-      <Hello name={name} age={age} />
+      <Display counter={counter} />
+
+      <Button onClick={sumaUno} text="suma"/>
+      <Button onClick={restarUno} text="resta" />
+      <Button onClick={reset} text="cero"/>
     </div>
+    
   )
 }
 
