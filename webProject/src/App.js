@@ -1,60 +1,62 @@
 const Header = (props) => {
   console.log(props)
   return(
-    <h2>{props.course}</h2>
+    <div>
+      <h1>{props.course}</h1>
+    </div>
   )
 }
 
-const Content = (props) =>{
+const Content = (props) => {
   console.log(props)
   return(
     <div>
-      <p>{props.part1} {props.exercise1}</p>
-      <p>{props.part2} {props.exercise2}</p>
-      <p>{props.part3} {props.exercise3}</p>
+      <p>{props.parts[0].name} {props.parts[0].exercises}</p>
+      <p>{props.parts[1].name} {props.parts[1].exercises}</p>
+      <p>{props.parts[2].name} {props.parts[2].exercises}</p>
     </div>
-    
-    )
+  )
 }
 
 const Total = (props) => {
   console.log(props)
   return(
-  <div>
-    <h3>Number fo exercises: {props.result}</h3>
-  </div>
-  )
-}
-
-const App = () => {
-
-  const course = 'Half stack application development';
-  
-  const part1 = {
-    name: 'Fundamentals of React',
-    exercise1: 10,
-  }
-  const part2 = {
-    name: 'Using props to pass data',
-    exercise2: 7,
-  } 
-  
-  const part3 = {
-    name: 'State of a component',
-    exercise3: 14,
-  }
-  
-  return (
     <div>
-      <Header course={course}/>
-      
-      <Content part1={part1.name} exercise1={part1.exercise1} part2={part2.name} exercise2={part2.exercise2} part3={part3.name} exercise3={part3.exercise3}/>
-     
-      <Total result={part1.exercise1 + part2.exercise2 + part3.exercise3}/>
+      <p>Total of exercises: {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}</p>
     </div>
   )
 }
 
+const App = () => {
+  const course =  'Half stack application development';
+  const parts = [
+    
+    {
+      name: 'Fundamentals of React', 
+      exercises: 10
+    },
+
+    {
+      name: 'Using props to pass data', 
+      exercises: 7
+    },
+
+    {
+      name: 'State of a component',
+      exercises: 14
+    },
+
+  ]
+    return (
+      <div>
+        <Header course={course} />
+        <Content parts={parts} />
+        <Total parts={parts} />
+
+      </div>
+    )
+}
+ 
 export default App;
 
 /*
