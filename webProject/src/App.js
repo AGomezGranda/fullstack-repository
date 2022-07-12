@@ -2,11 +2,36 @@ const Header = (props) => {
   console.log(props)
   return(
     <div>
-      <h1>{props.course}</h1>
+      <h1>
+        {props.course}
+      </h1>
     </div>
   )
 }
 
+const Content = (props) => {
+  console.log(props)
+  return(
+    <div>
+      <p>
+        {props.course}
+      </p>
+    </div>
+  )
+}
+
+const Total = (props) => {
+  console.log(props)
+  return(
+    <div>
+      <p>
+        {props.course}
+      </p>
+    </div>
+  )
+}
+
+/*
 const Content = (props) => {
   console.log(props)
   return(
@@ -26,12 +51,15 @@ const Total = (props) => {
     </div>
   )
 }
+*/
 
 const App = () => {
-  const course =  'Half stack application development';
-  const parts = [
+  const course= {
+  
+    name: 'Half Stack application development',
+    parts: [
     
-    {
+      {
       name: 'Fundamentals of React', 
       exercises: 10
     },
@@ -47,16 +75,19 @@ const App = () => {
     },
 
   ]
+  }
     return (
       <div>
-        <Header course={course} />
-        <Content parts={parts} />
-        <Total parts={parts} />
-
+        <Header course={course.name} />
+        <Content partes={course.parts.name} />
+        <Total parts={course.parts.exercises} />
       </div>
     )
-}
- 
+  }
+    /*
+        <Content parts={course.parts} />
+        <Total parts={course.parts} />
+    */
 export default App;
 
 /*
