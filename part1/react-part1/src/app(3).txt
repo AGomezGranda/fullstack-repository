@@ -1,0 +1,53 @@
+This file represents App.js of the first part of 1 - D
+
+import { useState } from "react";
+
+const History = (props) => {
+  if(props.allClicks.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons
+      </div>
+    )
+  }
+  return (
+    <div>
+      button press history; {props.allClicks.join(" ")}
+    </div>
+  )
+}
+
+const Button = ({ handleClick, text }) => <button onClick={handleClick}> {text} </button>
+
+const App = () => {
+  const [click, setClick] = useState({
+    left: 0, right: 0,
+  });
+
+  const [allClicks, setAll] = useState([])
+
+  const handleLeftClick = () => {
+    allClicks.push('L');
+    setAll(allClicks);
+    setClick({ ...click, left: click.left + 1, })
+  }
+  
+  const handleRightClick = () => {
+    allClicks.push('R')
+    setAll(allClicks)
+    setClick({ ...click, right: click.right + 1 })
+  }
+
+  return (
+    <div>
+      {click.left}
+      <Button handleClick={handleLeftClick} text= "IZQUIERDA " /> 
+      <Button handleClick={handleRightClick} text= "DERECHA " />
+      {click.right}
+      <History allClicks = {allClicks} />
+    </div>
+
+  )
+}
+
+export default App

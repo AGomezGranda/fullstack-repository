@@ -1,26 +1,28 @@
 import { useState } from "react";
 
-const Display = ({counter}) => <div> {counter} </div>
-const Button = ({onClick, text}) => <button onClick={onClick}> {text} </button>  
+const Button = (props) => (
+  <button onClick={props.handleClick}> {props.text} </button>
+)
+
+const Display = props => <div> <p>{props.value}</p> </div>
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-
-  const sumaUno = () => { setCounter(counter + 1) };
-  const restarUno = () => {setCounter(counter -1)}
-  const reset = () => { setCounter(0) };
+  const [value, setValue] = useState(0) 
   
+  const setToValue = (newValue) => {
+    console.log("value now", newValue)
+    setValue(newValue)
+  }
 
   return (
     <div>
-      <Display counter={counter} />
-
-      <Button onClick={sumaUno} text="suma"/>
-      <Button onClick={restarUno} text="resta" />
-      <Button onClick={reset} text="cero"/>
+      <Display value={value} />
+      <Button handleClick={() => setToValue(value + 1000)} text= " + 1000"/>
+      <Button handleClick={() => setToValue(0)} text= "RESET"/>
+      <Button handleClick={() => setToValue(value + 1)} text= " + 1"/>
     </div>
-    
   )
+
 }
 
 export default App

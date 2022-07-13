@@ -14,7 +14,7 @@ const Content = (props) => {
   return(
     <div>
       <p>
-        {props.course}
+        {props.course.parts}
       </p>
     </div>
   )
@@ -25,7 +25,7 @@ const Total = (props) => {
   return(
     <div>
       <p>
-        {props.course}
+        {props.course.parts}
       </p>
     </div>
   )
